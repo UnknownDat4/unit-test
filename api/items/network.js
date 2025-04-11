@@ -3,6 +3,7 @@ const response = require('../../network/response')
 const router = Router();
 const ctrl = require('./index');
 const {tiMonth} = require('../../calculators/environment')
+const {calculateCircleArea} = require('/workspaces/unit-test/calculators/circle.js')
 
 const tableInjected = 'my_table'
 
@@ -20,6 +21,15 @@ router.get('/list', async (req, res) => {
 router.get('/list2', async (req, res) => {
     try {
         response.success(req, res, tiMonth(1.4), 200);    
+    } catch (error) {
+        response.error(req, res, error.message, 500); 
+    }
+})
+
+router.get('/area/:radius', async (req, res) => {
+    try {
+        const radiusParam = req.params.radius 
+        response.success(req, res, calculateCircleArea(radiusParam), 200);    
     } catch (error) {
         response.error(req, res, error.message, 500); 
     }
