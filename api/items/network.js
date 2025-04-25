@@ -2,7 +2,7 @@ const { Router } = require('express');
 const response = require('../../network/response')
 const router = Router();
 const ctrl = require('./index');
-const {tiMonth} = require('../../calculators/environment')
+const {tiMonth, fuelEnergySelector} = require('../../calculators/environment')
 const {calculateCircleArea} = require('/workspaces/unit-test/calculators/circle.js')
 
 const tableInjected = 'my_table'
@@ -16,6 +16,15 @@ router.get('/list', async (req, res) => {
         response.error(req, res, error.message, 500); 
     }
 })
+
+router.get("/env_test/:fuel", async (req, res) => {
+    try{
+        const typeOfFuel = req.params.fuel
+        response.success(req, res, fuelEnergySelector(typeOfFuel))
+    } catch (error){
+        response.error(req, res, error.message, 500);
+    }
+}) 
 
 
 router.get('/list2', async (req, res) => {
@@ -34,6 +43,8 @@ router.get('/area/:radius', async (req, res) => {
         response.error(req, res, error.message, 500); 
     }
 })
+
+
 
 
 router.get('/:id', async (req, res) => {
