@@ -4,20 +4,24 @@ const tiMonth = (ipc) => {
     return ti
 } 
 
-const fuelEnergySelector = async (data, scraping) => {
+const fuelEnergySelector = (data) => {
+    data = data.toLowerCase()
     let fuel_info = {}
     if (data === 'diesel' || data == 'Diesel') {
-        fuel_info['fuel_price'] = scraping['diesel_price']
-        fuel_info['fuel_energy'] = ('diesel_energy')
-        fuel_info['emision_factor'] = ('emision_factor_diesel')
+        fuel_info['fuel_price'] = 11795
+        fuel_info['fuel_energy'] = 40.7
+        fuel_info['emision_factor'] = 74.01
         return fuel_info
     }
-    else {
-        fuel_info['fuel_price'] = scraping['fuel_price']
-        fuel_info['fuel_energy'] = ('gasoline_energy')
-        fuel_info['emision_factor'] = ('emision_factor_gasoline')
+    
+    if (data === 'gasoline' || data === 'Gasoline'){
+        fuel_info['fuel_price'] = 16700
+        fuel_info['fuel_energy'] = 35.58
+        fuel_info['emision_factor'] = 69.25
         return fuel_info
     }
+
+    return {}
 }
 
 //  kWh/km
