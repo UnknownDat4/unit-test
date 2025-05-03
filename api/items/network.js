@@ -2,8 +2,8 @@ const { Router } = require('express');
 const response = require('../../network/response')
 const router = Router();
 const ctrl = require('./index');
-const {tiMonth, fuelEnergySelector} = require('../../calculators/environment')
-const {calculateCircleArea} = require('/workspaces/unit-test/calculators/circle.js')
+const {tiMonth, fuelEnergySelector, combustionConsumption, fuelConsumption, costElectricalKM} = require('../../calculators/environment')
+const {calculateCircleArea} = require('../../calculators/circle.js')
 
 const tableInjected = 'my_table'
 
@@ -18,9 +18,20 @@ router.get('/list', async (req, res) => {
 })
 
 router.get("/env_test/:fuel", async (req, res) => {
+
+    const typeOfFuel = req.params.fuel
+    const electrical_consumption = combustionConsumption(81.14, 200)
+    const fuel_selector = fuelEnergySelector(typeOfFuel)
+    const fuel_consumption = fuelConsumption(combustionConsumption, fuel_selector['fuel_energy'])
     try{
-        const typeOfFuel = req.params.fuel
-        response.success(req, res, fuelEnergySelector(typeOfFuel))
+        const list = {
+            'month_inflation': tiMonth(2.8),
+            'fuel_selected': fuel_selector,
+            'electrical_consumption': electrical_consumption,
+            'cost_electrical_km': costElectricalKM(electrical_consumption, 238.25),
+            'combustion_consumption': fuel_consumption
+        }
+        response.success(req, res, list, 200)
     } catch (error){
         response.error(req, res, error.message, 500);
     }
