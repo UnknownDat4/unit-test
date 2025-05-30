@@ -4,7 +4,7 @@
   "description": "Api Base Arquitecture",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"mocha test --reporter mochawesome",
     "dev": "nodemon run api/index.js",
     "BD": "nodemon run postgresql/index.js",
     "PM2_API_ITEMS": "pm2 start api/index.js --name api-items",
@@ -26,6 +26,8 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "mocha": "^11.2.2",
+    "nodemon": "^3.1.9",
+    "mochawesome": "^7.1.3"
   }
 }

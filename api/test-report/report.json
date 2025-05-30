@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-05-10T15:20:04.993Z",
+    "end": "2025-05-10T15:20:04.998Z",
+    "duration": 5,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6400a3e6-7b97-45db-a24b-d7e279b4e6cd",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "547f1d09-a1a9-458b-af67-75b8bf0bf014",
+          "title": "circle test",
+          "fullFile": "/workspaces/unit-test/test/env_test.js",
+          "file": "/test/env_test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should calculate circle area",
+              "fullTitle": "circle test should calculate circle area",
+              "timedOut": false,
+              "duration": 1,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = calculateCircleArea(5)  \nassert.strictEqual(result, 78.539816339744830961566084581988.toFixed(3) , 'Did not pass the test')",
+              "err": {},
+              "uuid": "b19e125f-a515-4286-b6c8-c370a674797c",
+              "parentUUID": "547f1d09-a1a9-458b-af67-75b8bf0bf014",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b19e125f-a515-4286-b6c8-c370a674797c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+          "title": "fuel energy selector tests",
+          "fullFile": "/workspaces/unit-test/test/env_test.js",
+          "file": "/test/env_test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return correct values for diesel",
+              "fullTitle": "fuel energy selector tests should return correct values for diesel",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const expectedDieselInfo = {\n  fuel_price: 11795,\n  fuel_energy: 40.7,\n  emision_factor: 74.01\n};\nassert.deepStrictEqual(fuelEnergySelector('Diesel'), expectedDieselInfo);",
+              "err": {},
+              "uuid": "93d40346-614e-4ed5-9eca-e4639bc1b197",
+              "parentUUID": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return correct values for gasoline",
+              "fullTitle": "fuel energy selector tests should return correct values for gasoline",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const expectedGasolineInfo = {\n  fuel_price: 16700,\n  fuel_energy: 35.58,\n  emision_factor: 69.25\n};\nassert.deepStrictEqual(fuelEnergySelector('Gasoline'), expectedGasolineInfo);",
+              "err": {},
+              "uuid": "a368fe7e-86ba-486c-9132-f6692ea52bbf",
+              "parentUUID": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not return an empty object for gasoline",
+              "fullTitle": "fuel energy selector tests should not return an empty object for gasoline",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "assert.notDeepEqual(fuelEnergySelector('Gasoline'), {});",
+              "err": {},
+              "uuid": "5a276aed-f6a8-4fcd-ac84-7c659e895b31",
+              "parentUUID": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "93d40346-614e-4ed5-9eca-e4639bc1b197",
+            "a368fe7e-86ba-486c-9132-f6692ea52bbf",
+            "5a276aed-f6a8-4fcd-ac84-7c659e895b31"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.2.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "api/test-report",
+        "reportFilename": "report",
+        "overwrite": "true",
+        "inline": "true",
+        "quiet": "false"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

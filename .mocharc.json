@@ -1,0 +1,10 @@
+{   
+    "reporter": "mochawesome",
+    "reporter-option": [
+        "reportDir=api/test-report",
+        "reportFilename=report",
+        "overwrite=true",
+        "inline=true",
+        "quiet=false"
+    ]
+}

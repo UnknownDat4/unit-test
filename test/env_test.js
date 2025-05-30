@@ -1,13 +1,16 @@
-const {test, describe, it} = require('node:test');
+const {describe, it} = require('mocha');
 const assert = require('node:assert');
 const {calculateCircleArea} = require('/workspaces/unit-test/calculators/circle.js');
 const {fuelEnergySelector} = require('/workspaces/unit-test/calculators/environment.js')
 
 
-test('should calculate circle area', () => {
+describe('circle test', () => {
+  it('should calculate circle area', () => {
   const result = calculateCircleArea(5)  
   assert.strictEqual(result, 78.539816339744830961566084581988.toFixed(3) , 'Did not pass the test')
 })
+})
+
 
 describe('fuel energy selector tests', () => {
   
@@ -32,5 +35,17 @@ describe('fuel energy selector tests', () => {
   it('should not return an empty object for gasoline', () => {
     assert.notDeepEqual(fuelEnergySelector('Gasoline'), {});
   });
+  
+  it('should return correct values for LPG', () => {
+    const expectedLPGInfo = {
+      fuel_price: 9000,
+      fuel_energy: 27.1,
+      emision_factor: 63.1
+    };
+    assert.deepStrictEqual(fuelEnergySelector('LPG'), expectedLPGInfo);
+  });
 
+  it('should return undefined for unknown fuel type', () => {
+    assert.strictEqual(fuelEnergySelector('UnknownFuel'), undefined);
+  });
 });

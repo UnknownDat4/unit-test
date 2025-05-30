@@ -2,8 +2,10 @@ const { Router } = require('express');
 const response = require('../../network/response')
 const router = Router();
 const ctrl = require('./index');
-const {tiMonth, fuelEnergySelector, combustionConsumption, fuelConsumption, costElectricalKM} = require('../../calculators/environment')
-const {calculateCircleArea} = require('../../calculators/circle.js')
+const {tiMonth, fuelEnergySelector} = require('../../calculators/environment')
+const {calculateCircleArea} = require('/workspaces/unit-test/calculators/circle.js');
+const { patch } = require('request');
+const path = require('node:path')
 
 const tableInjected = 'my_table'
 
@@ -37,6 +39,10 @@ router.get("/env_test/:fuel", async (req, res) => {
     }
 }) 
 
+router.get("/report", (req, res) => {
+    const reportPath = path.join(__dirname, "../test-report/report.html");
+    res.sendFile(reportPath)
+})
 
 router.get('/list2', async (req, res) => {
     try {
