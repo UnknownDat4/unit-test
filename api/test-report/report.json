@@ -1,15 +1,15 @@
 {
   "stats": {
     "suites": 2,
-    "tests": 4,
+    "tests": 6,
     "passes": 4,
     "pending": 0,
-    "failures": 0,
-    "start": "2025-05-10T15:20:04.993Z",
-    "end": "2025-05-10T15:20:04.998Z",
-    "duration": 5,
-    "testsRegistered": 4,
-    "passPercent": 100,
+    "failures": 2,
+    "start": "2025-05-30T05:00:08.841Z",
+    "end": "2025-05-30T05:00:08.858Z",
+    "duration": 17,
+    "testsRegistered": 6,
+    "passPercent": 66.66666666666666,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "6400a3e6-7b97-45db-a24b-d7e279b4e6cd",
+      "uuid": "63e20899-a875-44b8-b88f-e1531715746d",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "547f1d09-a1a9-458b-af67-75b8bf0bf014",
+          "uuid": "6815cec1-7334-4e5f-a8a5-6cfbe2fec927",
           "title": "circle test",
           "fullFile": "/workspaces/unit-test/test/env_test.js",
           "file": "/test/env_test.js",
@@ -47,15 +47,15 @@
               "context": null,
               "code": "const result = calculateCircleArea(5)  \nassert.strictEqual(result, 78.539816339744830961566084581988.toFixed(3) , 'Did not pass the test')",
               "err": {},
-              "uuid": "b19e125f-a515-4286-b6c8-c370a674797c",
-              "parentUUID": "547f1d09-a1a9-458b-af67-75b8bf0bf014",
+              "uuid": "c08c4126-b091-4693-8e39-548c17f58d6a",
+              "parentUUID": "6815cec1-7334-4e5f-a8a5-6cfbe2fec927",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "b19e125f-a515-4286-b6c8-c370a674797c"
+            "c08c4126-b091-4693-8e39-548c17f58d6a"
           ],
           "failures": [],
           "pending": [],
@@ -66,7 +66,7 @@
           "_timeout": 2000
         },
         {
-          "uuid": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+          "uuid": "b64687a2-1039-49df-8baa-80e5ed351022",
           "title": "fuel energy selector tests",
           "fullFile": "/workspaces/unit-test/test/env_test.js",
           "file": "/test/env_test.js",
@@ -77,7 +77,7 @@
               "title": "should return correct values for diesel",
               "fullTitle": "fuel energy selector tests should return correct values for diesel",
               "timedOut": false,
-              "duration": 0,
+              "duration": 1,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -86,8 +86,8 @@
               "context": null,
               "code": "const expectedDieselInfo = {\n  fuel_price: 11795,\n  fuel_energy: 40.7,\n  emision_factor: 74.01\n};\nassert.deepStrictEqual(fuelEnergySelector('Diesel'), expectedDieselInfo);",
               "err": {},
-              "uuid": "93d40346-614e-4ed5-9eca-e4639bc1b197",
-              "parentUUID": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+              "uuid": "c7234df7-5a50-45ac-8f7b-a6e82cffc542",
+              "parentUUID": "b64687a2-1039-49df-8baa-80e5ed351022",
               "isHook": false,
               "skipped": false
             },
@@ -104,8 +104,8 @@
               "context": null,
               "code": "const expectedGasolineInfo = {\n  fuel_price: 16700,\n  fuel_energy: 35.58,\n  emision_factor: 69.25\n};\nassert.deepStrictEqual(fuelEnergySelector('Gasoline'), expectedGasolineInfo);",
               "err": {},
-              "uuid": "a368fe7e-86ba-486c-9132-f6692ea52bbf",
-              "parentUUID": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+              "uuid": "233fabfa-5ee4-44f1-9313-d86b7a0d14e1",
+              "parentUUID": "b64687a2-1039-49df-8baa-80e5ed351022",
               "isHook": false,
               "skipped": false
             },
@@ -122,22 +122,69 @@
               "context": null,
               "code": "assert.notDeepEqual(fuelEnergySelector('Gasoline'), {});",
               "err": {},
-              "uuid": "5a276aed-f6a8-4fcd-ac84-7c659e895b31",
-              "parentUUID": "fad30d44-99ec-4e71-ac55-8c0134db2411",
+              "uuid": "b7545dbd-a390-4cbd-9f68-7cd8459f749e",
+              "parentUUID": "b64687a2-1039-49df-8baa-80e5ed351022",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return correct values for LPG",
+              "fullTitle": "fuel energy selector tests should return correct values for LPG",
+              "timedOut": false,
+              "duration": 3,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const expectedLPGInfo = {\n  fuel_price: 9000,\n  fuel_energy: 27.1,\n  emision_factor: 63.1\n};\nassert.deepStrictEqual(fuelEnergySelector('LPG'), expectedLPGInfo);",
+              "err": {
+                "message": "AssertionError: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ {}\n- {\n-   emision_factor: 63.1,\n-   fuel_energy: 27.1,\n-   fuel_price: 9000\n- }",
+                "estack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ {}\n- {\n-   emision_factor: 63.1,\n-   fuel_energy: 27.1,\n-   fuel_price: 9000\n- }\n    at Context.<anonymous> (test/env_test.js:45:12)\n    at process.processImmediate (node:internal/timers:483:21)",
+                "diff": "- {}\n+ {\n+   \"emision_factor\": 63.1\n+   \"fuel_energy\": 27.1\n+   \"fuel_price\": 9000\n+ }\n"
+              },
+              "uuid": "8879a1ba-f099-406d-89f9-ac8fb0c46c86",
+              "parentUUID": "b64687a2-1039-49df-8baa-80e5ed351022",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return undefined for unknown fuel type",
+              "fullTitle": "fuel energy selector tests should return undefined for unknown fuel type",
+              "timedOut": false,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "assert.strictEqual(fuelEnergySelector('UnknownFuel'), undefined);",
+              "err": {
+                "message": "AssertionError: Expected values to be strictly equal:\n+ actual - expected\n\n+ {}\n- undefined",
+                "estack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ {}\n- undefined\n    at Context.<anonymous> (test/env_test.js:49:12)\n    at process.processImmediate (node:internal/timers:483:21)",
+                "diff": null
+              },
+              "uuid": "1d59e610-ed7c-4160-9d19-fd62ebbfb5b5",
+              "parentUUID": "b64687a2-1039-49df-8baa-80e5ed351022",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "93d40346-614e-4ed5-9eca-e4639bc1b197",
-            "a368fe7e-86ba-486c-9132-f6692ea52bbf",
-            "5a276aed-f6a8-4fcd-ac84-7c659e895b31"
+            "c7234df7-5a50-45ac-8f7b-a6e82cffc542",
+            "233fabfa-5ee4-44f1-9313-d86b7a0d14e1",
+            "b7545dbd-a390-4cbd-9f68-7cd8459f749e"
           ],
-          "failures": [],
+          "failures": [
+            "8879a1ba-f099-406d-89f9-ac8fb0c46c86",
+            "1d59e610-ed7c-4160-9d19-fd62ebbfb5b5"
+          ],
           "pending": [],
           "skipped": [],
-          "duration": 0,
+          "duration": 4,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
